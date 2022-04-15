@@ -39,24 +39,39 @@
 #include "utils.h"
 
 int main(void) {
-	//int kilometros;
-	//int precioAerolinea;
-	//int precioLatam;
-	float optionNumber;
+	int optionNumber;
 	int validOption;
+
+	int kilometres;
+	int airlinePrice;
+	int latamPrice;
 
 	validOption = isValidOption(3, "Seleccione una opción:\n1. Ingresar Kilómetros.\n2. Ingresar Precio de Vuelos.\n3. Calcular todos los costos.\n4. Informar Resultados.\n5. Carga forzada de datos.\n6. Salir.\n", "Error. Opción inválida.", &optionNumber);
 
 	if(validOption == 1){
-		printf("option: %d", optionNumber);
-	}
-	//printf("Ingresar Kilómetros:\n");
-	//scanf("%d", &kilometros);
-	//printf("Ingresar precio Aerolíneas:\n");
-	//scanf("%d", &precioAerolinea);
-	//printf("Ingresar precio Latam:\n");
-	//scanf("%d", &precioLatam);
+		switch(optionNumber){
+			case 1:
+			  printf("Ingresar Kilómetros:\n");
+			  scanf("%d", &kilometres);
+				break;
+			case 2:
+			 printf("Ingresar precio Aerolíneas:\n");
+			 scanf("%d", &airlinePrice);
+		     printf("Ingresar precio Latam:\n");
+			 scanf("%d", &latamPrice);
+				break;
+			case 3:
 
-	// printf("K: %d, A: %d, L: %d", kilometros, precioAerolinea, precioLatam);
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+		}
+	}
+
+    printf("K: %d, A: %d, L: %d", kilometres, airlinePrice, latamPrice);
 	return EXIT_SUCCESS;
 }

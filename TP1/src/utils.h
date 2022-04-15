@@ -8,7 +8,7 @@
 #ifndef UTILS_H_
 #define UTILS_H_
 
-int isValidOption(int retries, char message[], char errorMessage[], float *memorySpace);
+int isValidOption(int retries, char message[], char errorMessage[], int *memorySpace);
 
 
 #endif /* UTILS_H_ */
