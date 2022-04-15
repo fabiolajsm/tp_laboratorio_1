@@ -9,13 +9,12 @@
 
 int isValidOption(int retries, char message[], char errorMessage[], int *memorySpace){
 	int buffer;
-	int response;
 	int rtn = 1;
 	int i;
 
 	for (i = 0; i < retries; i++){
 		printf("\n%s", message);
-		response = scanf("%d", &buffer);
+		scanf("%d", &buffer);
 
 		if(buffer == 1 || buffer == 2 || buffer == 3 || buffer == 4 || buffer == 5 || buffer == 6) {
 			(*memorySpace) = buffer;
