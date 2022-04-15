@@ -9,5 +9,6 @@
 #define UTILS_H_
 
 int isValidOption(int retries, char message[], char errorMessage[], int *memorySpace);
+void calculatePrices(int km, int airlinePrice, int latamPrice);
 
 #endif /* UTILS_H_ */
