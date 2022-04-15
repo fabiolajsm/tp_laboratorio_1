@@ -11,21 +11,26 @@ int isValidOption(int retries, char message[], char errorMessage[], int *memoryS
 	int buffer;
 	int response;
 	int rtn = 1;
+	int i;
 
-	if(retries >= 0 && message != NULL && errorMessage != NULL){
+	for (i = 0; i < retries; i++){
 		printf("\n%s", message);
 		response = scanf("%d", &buffer);
 
-		do {
-			if(response == 1 || response == 2 || response == 3 || response == 4 || response == 5 || response == 6){
-				(*memorySpace) = buffer;
-				retries = -1;
-			} else {
-				rtn = 0;
-				retries--;
-				printf("\n%s", errorMessage);
-			}
-		} while(retries >= 0);
+		if(buffer == 1 || buffer == 2 || buffer == 3 || buffer == 4 || buffer == 5 || buffer == 6) {
+			(*memorySpace) = buffer;
+			i = retries;
+		} else {
+			printf("\n%s", errorMessage);
+			rtn = 0;
+		}
 	}
 	return rtn;
 }
+
+// Calcular todos los costos:
+//) Tarjeta de débito (descuento 10%)
+//) Tarjeta de crédito (interés 25%)
+//) Bitcoin (1BTC -> 4606954.55 Pesos Argentinos)
+//) Mostrar precio por km (precio unitario)
+//) Mostrar diferencia de precio ingresada (Latam - Aerolíneas)

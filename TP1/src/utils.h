@@ -10,5 +10,4 @@
 
 int isValidOption(int retries, char message[], char errorMessage[], int *memorySpace);
 
-
 #endif /* UTILS_H_ */
