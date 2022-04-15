@@ -52,5 +52,17 @@ void calculatePrices(int km, int airlinePrice, int latamPrice){
 		// e) price difference
 		float priceDifference = totalLatam - totalAirline;
 		printf("La diferencia de precio ingresada (Latam - Aerolíneas) es: %f\n", priceDifference);
+	} else {
+		printf("Para calcular los precios finales, deberás ingresar por cada vuelo los km totales y el precio total del mismo. Puedes ingresarlos haciendo click en la opción 1 y 2.\n");
+	}
+}
+
+void exitOptions(float *memorySpace, char finish){
+	if(memorySpace != NULL && finish){
+		if(finish == 's'){
+			*memorySpace = (int) 1;
+		} else {
+			*memorySpace = (int) 0;
+		}
 	}
 }
