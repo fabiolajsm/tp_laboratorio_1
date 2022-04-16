@@ -37,12 +37,6 @@ int isValidOption(int retries, char message[], char errorMessage[], int *memoryS
 	return rtn;
 }
 
-// Calcular todos los costos:
-//a) Tarjeta de débito (descuento 10%)
-//b) Tarjeta de crédito (interés 25%)
-//c) Bitcoin (1BTC -> 4606954.55 Pesos Argentinos)
-//d) Mostrar precio por km (precio unitario)
-//e) Mostrar diferencia de precio ingresada (Latam - Aerolíneas)
 void calculatePrices(int km, int airlinePrice, int latamPrice, int console){
 	float onebtc = 4606954.55;
 	if(km && airlinePrice && latamPrice){
