@@ -38,23 +38,6 @@
 #include <stdlib.h>
 #include "utils.h"
 
-typedef struct airline {
-	int airlinePrice;
-	float discountDebitA;
-	float discountCreditA;
-	float btcA;
-	float totalAirline;
-};
-
-typedef struct latam {
-	int latamPrice;
-	float discountDebitL;
-	float discountCreditL;
-	float btcL;
-	float totalLatam;
-};
-
-
 int main(void) {
 	int showOptions = 1;
 
@@ -62,10 +45,8 @@ int main(void) {
 	int validOption;
 
 	int kilometres;
-	float priceDifference;
-
-    struct airline auxAirline;
-    struct latam auxLatam;
+	int airlinePrice;
+	int latamPrice;
 
 	while(showOptions == 1){
 		validOption = isValidOption(3, "Seleccione una opción:\n1. Ingresar Kilómetros.\n2. Ingresar Precio de Vuelos.\n3. Calcular todos los costos.\n4. Informar Resultados.\n5. Carga forzada de datos.\n6. Salir.\n", "Error. Opción inválida.", &optionNumber);
@@ -73,24 +54,27 @@ int main(void) {
 		if(validOption == 1){
 			switch(optionNumber){
 				case 1:
-				  printf("Ingresar Kilómetros:\n");
-				  scanf("%d", &kilometres);
+				 printf("Ingresar Kilómetros:\n");
+				 scanf("%d", &kilometres);
 					break;
 				case 2:
 				 printf("Ingresar precio Aerolíneas:\n");
-				 scanf("%d", &auxAirline.airlinePrice);
+				 scanf("%d", &airlinePrice);
 				 printf("Ingresar precio Latam:\n");
-				 scanf("%d", &auxLatam.latamPrice);
+				 scanf("%d", &latamPrice);
 					break;
 				case 3:
-					calculatePrices(kilometres, auxAirline.airlinePrice, auxLatam.latamPrice, &auxAirline.discountDebitA, &auxAirline.discountCreditA, &auxLatam.discountDebitL, &auxLatam.discountCreditL, &auxAirline.btcA, &auxLatam.btcL, &auxAirline.totalAirline, &auxLatam.totalLatam, &priceDifference);
+				 calculatePrices(kilometres, airlinePrice, latamPrice, 1);
 					break;
 				case 4:
+				 showPrices(kilometres, airlinePrice, latamPrice);
 					break;
 				case 5:
+				 calculatePrices(7090, 162965, 159339, 0);
+				 showPrices(kilometres, airlinePrice, latamPrice);
 					break;
 				case 6:
-					exitOptions(&showOptions, 's');
+				 exitOptions(&showOptions, 's');
 					break;
 			}
 		}
