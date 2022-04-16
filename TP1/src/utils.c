@@ -8,13 +8,13 @@
 #include <stdlib.h>
 
 float discountDebitA;
-float discountCreditA;
+float interestCreditA;
 float btcA;
-float totalAirline;
+float uAirline;
 float discountDebitL;
-float discountCreditL;
+float interestCreditL;
 float btcL;
-float totalLatam;
+float uLatam;
 float priceDifference;
 
 int isValidOption(int retries, char message[], char errorMessage[], int *memorySpace){
@@ -47,19 +47,19 @@ void calculatePrices(int km, int airlinePrice, int latamPrice, int console){
 	float onebtc = 4606954.55;
 	if(km && airlinePrice && latamPrice){
 		discountDebitA = airlinePrice - (airlinePrice * 0.10);
-		discountCreditA = airlinePrice - (airlinePrice * 0.25);
+		interestCreditA = airlinePrice + (airlinePrice * 0.25);
 		discountDebitL = latamPrice - (latamPrice * 0.10);
-		discountCreditL = latamPrice - (latamPrice * 0.25);
+		interestCreditL = latamPrice + (latamPrice * 0.25);
 
 		btcA = airlinePrice / onebtc;
 		btcL = latamPrice / onebtc;
-		totalAirline = km * airlinePrice;
-		totalLatam = km * latamPrice;
-		priceDifference = totalLatam - totalAirline;
+		uLatam = latamPrice / km;
+		uAirline = airlinePrice / km;
+		priceDifference = airlinePrice - latamPrice ;
 		switch(console){
 			case 1:
-				printf("El precio por km (precio unitario) Latam es: %f\nEl precio por km (precio unitario) Airline es: %f\n", totalLatam, totalAirline);
-				printf("La diferencia de precio ingresada (Latam - Aerolíneas) es: %f\n", priceDifference);
+			printf("El precio por km (precio unitario) Latam es: %f\nEl precio por km (precio unitario) Airline es: %f\n", uLatam, uAirline);
+			printf("La diferencia de precio ingresada (Latam - Aerolíneas) es: %f\n", priceDifference);
 			break;
 			case 0:
 			break;
@@ -71,9 +71,9 @@ void calculatePrices(int km, int airlinePrice, int latamPrice, int console){
 
 void showPrices(int km, int airlinePrice, int latamPrice){
 	if(km && airlinePrice && latamPrice && discountDebitL && discountDebitA){
-		printf("Latam:\na) Precio con tarjeta de débito: %f\nb) Precio con tarjeta de crédito: %f\nc) Precio pagando con bitcoin: %f\nd) Precio unitario: %d\n", discountDebitL, discountCreditL, btcL, totalLatam);
-		printf("Aerolíneas:\na) Precio con tarjeta de débito: %f\nb) Precio con tarjeta de crédito: %f\nc) Precio pagando con bitcoin: %f\nd) Precio unitario: %d\n", discountDebitA, discountCreditA, btcA, totalAirline);
-		printf("La diferencia de precio ingresada (Latam - Aerolíneas) es: %f\n", priceDifference);
+		printf("Latam:\na) Precio con tarjeta de débito: $ %f\nb) Precio con tarjeta de crédito: $ %f\nc) Precio pagando con bitcoin: %f BTC\nd) Precio unitario:$ %f\n", discountDebitL, interestCreditL, btcL, uLatam);
+		printf("Aerolíneas:\na) Precio con tarjeta de débito: $ %f\nb) Precio con tarjeta de crédito: $ %f\nc) Precio pagando con bitcoin: %f BTC\nd) Precio unitario:$ %f\n", discountDebitA, interestCreditA, btcA, uAirline);
+		printf("La diferencia de precio ingresada (Latam - Aerolíneas) es: $ %f\n", priceDifference);
 	} else {
 		printf("Para mostrar los precios finales, tienes que calcular todos los costos. Puedes hacerlo seleccionando la opción 3.\n");
 	}
