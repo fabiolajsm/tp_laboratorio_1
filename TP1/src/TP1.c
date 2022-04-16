@@ -38,6 +38,23 @@
 #include <stdlib.h>
 #include "utils.h"
 
+typedef struct airline {
+	int airlinePrice;
+	float discountDebitA;
+	float discountCreditA;
+	float btcA;
+	float totalAirline;
+};
+
+typedef struct latam {
+	int latamPrice;
+	float discountDebitL;
+	float discountCreditL;
+	float btcL;
+	float totalLatam;
+};
+
+
 int main(void) {
 	int showOptions = 1;
 
@@ -45,8 +62,10 @@ int main(void) {
 	int validOption;
 
 	int kilometres;
-	int airlinePrice;
-	int latamPrice;
+	float priceDifference;
+
+    struct airline auxAirline;
+    struct latam auxLatam;
 
 	while(showOptions == 1){
 		validOption = isValidOption(3, "Seleccione una opción:\n1. Ingresar Kilómetros.\n2. Ingresar Precio de Vuelos.\n3. Calcular todos los costos.\n4. Informar Resultados.\n5. Carga forzada de datos.\n6. Salir.\n", "Error. Opción inválida.", &optionNumber);
@@ -59,12 +78,12 @@ int main(void) {
 					break;
 				case 2:
 				 printf("Ingresar precio Aerolíneas:\n");
-				 scanf("%d", &airlinePrice);
+				 scanf("%d", &auxAirline.airlinePrice);
 				 printf("Ingresar precio Latam:\n");
-				 scanf("%d", &latamPrice);
+				 scanf("%d", &auxLatam.latamPrice);
 					break;
 				case 3:
-					calculatePrices(kilometres, airlinePrice, latamPrice);
+					calculatePrices(kilometres, auxAirline.airlinePrice, auxLatam.latamPrice, &auxAirline.discountDebitA, &auxAirline.discountCreditA, &auxLatam.discountDebitL, &auxLatam.discountCreditL, &auxAirline.btcA, &auxLatam.btcL, &auxAirline.totalAirline, &auxLatam.totalLatam, &priceDifference);
 					break;
 				case 4:
 					break;
