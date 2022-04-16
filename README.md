@@ -1,4 +1,4 @@
-# ProgramacionI-TP1
+# ProgramacionI- Trabajos Prácticos
 Trabajo práctico #1.<br>
 ----
 Una agencia de viaje necesita calcular costos para sus vuelos de Latam y Aerolíneas Argentinas para ofrecerlos a sus clientes. Se deberá ingresar por cada vuelo los km totales y el precio total del mismo. El objetivo de la aplicación es mostrar las diferentes opciones de pagos a sus clientes.<br>
